@@ -55,30 +55,25 @@ int lastMilli = 0;
 int   deadloops = 0; 
 
 double KpA = 7.5, KiA = 14 ,KdA = 0.14;
-PID PIDA(&vA, &pwmA, &speed_req_A, KpA, KiA, KdA, DIRECT);
-
 double KpB = 7.5, KiB=13 ,KdB = 0.5;
+
+PID PIDA(&vA, &pwmA, &speed_req_A, KpA, KiA, KdA, DIRECT);
 PID PIDB(&vB, &pwmB, &speed_req_B, KpB, KiB, KdB, DIRECT);
 
 void handle_cmd (const geometry_msgs::Twist& cmd_vel);
-ros::NodeHandle nh;
-ros::Subscriber<geometry_msgs::Twist> cmd_vel("cmd_vel", handle_cmd);  
+void drive(int speedA,int speedB);
 
-geometry_msgs::Vector3Stamped speed_msg;                               
+ros::NodeHandle nh;
+geometry_msgs::Vector3Stamped speed_msg; 
+
+ros::Subscriber<geometry_msgs::Twist> cmd_vel("cmd_vel", handle_cmd);                                
 ros::Publisher speed_pub("speed", &speed_msg); 
 
-void handle_cmd (const geometry_msgs::Twist& cmd_vel) {
-  deadloops = 0; 
-                                                   
-  int speed_req = cmd_vel.linear.x  * 60;                                    
-  int angular_speed_req = cmd_vel.angular.z * 60;   
-  
-  speed_req_A = speed_req - angular_speed_req*(WBASE/2);   
+void drive(int speed_req_A,int speed_req_B){
   if (speed_req_A < 0)
   {
     digitalWrite(I1,HIGH);
     digitalWrite(I2,LOW);
-    speed_req_A = abs(speed_req_A);  
     dirA = -1;  
 
   }
@@ -94,7 +89,6 @@ void handle_cmd (const geometry_msgs::Twist& cmd_vel) {
     digitalWrite(I1,LOW);
     digitalWrite(I2,LOW);  
   }
-  speed_req_B = speed_req + angular_speed_req*(WBASE/2);
   if (speed_req_B < 0)
   {
     digitalWrite(I3,HIGH);
@@ -114,11 +108,43 @@ void handle_cmd (const geometry_msgs::Twist& cmd_vel) {
     digitalWrite(I3,LOW);
     digitalWrite(I4,LOW);    
   } 
+  speed_req_A = abs(speed_req_A);
+  speed_req_B = abs(speed_req_B);
+}
 
-     speed_req_A = abs(speed_req_A);
-     speed_req_B = abs(speed_req_B);
-  }
+void handle_cmd (const geometry_msgs::Twist& cmd_vel) {
+  deadloops = 0; 
+                                                   
+  int speed_req = cmd_vel.linear.x  * 60;                                    
+  int angular_speed_req = cmd_vel.angular.z * 60;   
+  
+  speed_req_A = speed_req - angular_speed_req*(WBASE/2);
+  speed_req_B = speed_req + angular_speed_req*(WBASE/2); 
+    
+  drive(speed_req_A,speed_req_B);
+}
 
+void publishSpeed(int looptime) {
+  speed_msg.header.stamp = nh.now();      //timestamp for odometry data
+  speed_msg.vector.x = vA * dirA/60;    //left wheel speed (in m/s)
+  speed_msg.vector.y = vB * dirB/60;   //right wheel speed (in m/s)
+  speed_msg.vector.z = looptime; 
+  speed_pub.publish(&speed_msg);
+  nh.spinOnce();
+  nh.loginfo("Publishing odometry\n");
+}
+
+void updateEncoderA(){
+static uint32_t tempA;
+  secsA = micros() - tempA;
+  tempA = micros();
+}
+
+void updateEncoderB(){
+static uint32_t tempB;
+  secsB = micros() - tempB;
+  tempB = micros();
+}
 
 void setup()
 {
@@ -148,8 +174,8 @@ void setup()
   digitalWrite(I4,LOW);  
   attachInterrupt(0, updateEncoderA, RISING);
   attachInterrupt(1, updateEncoderB, RISING); 
-   PIDA.SetMode(AUTOMATIC);
-   PIDB.SetMode(AUTOMATIC);
+  PIDA.SetMode(AUTOMATIC);
+  PIDB.SetMode(AUTOMATIC);
 }
 
 void loop(){ 
@@ -164,8 +190,8 @@ void loop(){
   vB = rpmB * RCONST * WRADIUS * SECS;
   
   PIDA.Compute();
-  analogWrite(E1,pwmA);
   PIDB.Compute();
+  analogWrite(E1,pwmA);
   analogWrite(E2,pwmB);
   
   if(lrpmB == rpmB)
@@ -181,26 +207,9 @@ void loop(){
     publishSpeed((millis()-lastMilli));  
     lastMilli = millis();
   }
-}
 
-void publishSpeed(int looptime) {
-  speed_msg.header.stamp = nh.now();      //timestamp for odometry data
-  speed_msg.vector.x = vA * dirA/60;    //left wheel speed (in m/s)
-  speed_msg.vector.y = vB * dirB/60;   //right wheel speed (in m/s)
-  speed_msg.vector.z = looptime; 
-  speed_pub.publish(&speed_msg);
-  nh.spinOnce();
-  nh.loginfo("Publishing odometry\n");
-}
-
-void updateEncoderA(){
-static uint32_t tempA;
-  secsA = micros() - tempA;
-  tempA = micros();
-}
-
-void updateEncoderB(){
-static uint32_t tempB;
-  secsB = micros() - tempB;
-  tempB = micros();
+  if (deadloops >= 100)
+  drive(0,0);
+  else
+  deadloops++;
 }
