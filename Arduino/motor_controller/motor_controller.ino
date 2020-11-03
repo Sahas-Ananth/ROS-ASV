@@ -15,7 +15,7 @@
 #define WRADIUS  0.05
 #define WBASE  0.48
 #define RCONST  0.104719755 // rpm to rad/s conversion constant
-
+#define DEADLOCK 5 //motors are disengaged when no communication occurs for X seconds
 //motor A
 const int encoderPinA1 = 2;
 const int encoderPinA2 = 8;
@@ -69,7 +69,7 @@ geometry_msgs::Vector3Stamped speed_msg;
 ros::Subscriber<geometry_msgs::Twist> cmd_vel("cmd_vel", handle_cmd);                                
 ros::Publisher speed_pub("speed", &speed_msg); 
 
-void drive(int speed_req_A,int speed_req_B){
+void drive(double speed_req_A,double speed_req_B){
   if (speed_req_A < 0)
   {
     digitalWrite(I1,HIGH);
@@ -108,8 +108,7 @@ void drive(int speed_req_A,int speed_req_B){
     digitalWrite(I3,LOW);
     digitalWrite(I4,LOW);    
   } 
-  speed_req_A = abs(speed_req_A);
-  speed_req_B = abs(speed_req_B);
+
 }
 
 void handle_cmd (const geometry_msgs::Twist& cmd_vel) {
@@ -122,6 +121,8 @@ void handle_cmd (const geometry_msgs::Twist& cmd_vel) {
   speed_req_B = speed_req + angular_speed_req*(WBASE/2); 
     
   drive(speed_req_A,speed_req_B);
+  speed_req_A = abs(speed_req_A);
+  speed_req_B = abs(speed_req_B);
 }
 
 void publishSpeed(int looptime) {
@@ -208,8 +209,8 @@ void loop(){
     lastMilli = millis();
   }
 
-  if (deadloops >= 100)
-  drive(0,0);
+  if (deadloops >= DEADLOCK * 20)
+  drive(0.0,0.0);
   else
   deadloops++;
 }
