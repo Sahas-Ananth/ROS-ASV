@@ -1,6 +1,5 @@
 //ros based UV sanitation robot 
 //pid based drive control
-
 #include <PID_v1.h>
 #include <ros.h>
 #include <std_msgs/String.h>
@@ -37,8 +36,8 @@ double rpmA;  //motor rpm
 double lrpmA = 0; //prevrpm
 double vA;  // in m/min
 
-volatile uint32_t secsB = 0; //time between successive revolutions
-int dirB = 0; 
+static uint32_t secsB = 0; //time between successive revolutions
+static uint32_t dirB = 0; 
 
 
 double rpmB;  //motor rpm
@@ -88,6 +87,7 @@ void drive(double speed_req_A,double speed_req_B){
   {
     digitalWrite(I1,LOW);
     digitalWrite(I2,LOW);  
+    dirA =0;
   }
   if (speed_req_B < 0)
   {
@@ -101,12 +101,13 @@ void drive(double speed_req_A,double speed_req_B){
   {
     digitalWrite(I3,LOW);
     digitalWrite(I4,HIGH); 
-    dirA = 1; 
+    dirB = 1; 
   }
   else
   {
     digitalWrite(I3,LOW);
-    digitalWrite(I4,LOW);    
+    digitalWrite(I4,LOW);
+    dirB =0;    
   } 
 
 }
@@ -127,8 +128,8 @@ void handle_cmd (const geometry_msgs::Twist& cmd_vel) {
 
 void publishSpeed(int looptime) {
   speed_msg.header.stamp = nh.now();      //timestamp for odometry data
-  speed_msg.vector.x = vA * dirA/60;    //left wheel speed (in m/s)
-  speed_msg.vector.y = vB * dirB/60;   //right wheel speed (in m/s)
+  speed_msg.vector.x = dirA * vA /60;    //left wheel speed (in m/s)
+  speed_msg.vector.y = dirB * vB /60;   //right wheel speed (in m/s)
   speed_msg.vector.z = looptime; 
   speed_pub.publish(&speed_msg);
   nh.spinOnce();
@@ -159,22 +160,28 @@ void setup()
   pinMode(encoderPinB1, INPUT); 
   pinMode(encoderPinB2, INPUT);
 
-  pinMode(E1, OUTPUT);
-  pinMode(I1, OUTPUT); 
-  pinMode(I2, OUTPUT);
-  
   digitalWrite(encoderPinA1, HIGH);
   digitalWrite(encoderPinA2, HIGH); 
   digitalWrite(encoderPinB1, HIGH);
   digitalWrite(encoderPinB2, HIGH);
+  
+  pinMode(E1, OUTPUT);
+  pinMode(I1, OUTPUT); 
+  pinMode(I2, OUTPUT);
+  pinMode(E2, OUTPUT);
+  pinMode(I3, OUTPUT); 
+  pinMode(I4, OUTPUT);  
 
-
+  digitalWrite(E1,LOW);
+  digitalWrite(E2,LOW);
   digitalWrite(I1,LOW);
   digitalWrite(I2,LOW);
   digitalWrite(I3,LOW);
   digitalWrite(I4,LOW);  
+  
   attachInterrupt(0, updateEncoderA, RISING);
   attachInterrupt(1, updateEncoderB, RISING); 
+  
   PIDA.SetMode(AUTOMATIC);
   PIDB.SetMode(AUTOMATIC);
 }
@@ -187,7 +194,7 @@ void loop(){
   rpmA =  ((secsA == 0)?0: 1000000/secsA) *(SECS/RPR) /GEARRATIO;
   vA = rpmA * RCONST * WRADIUS * SECS;
 
-  rpmB = ((secsB == 0)?1: 1000000/secsB) *(SECS/RPR) /GEARRATIO;
+  rpmB = ((secsB == 0)?0: 1000000/secsB) *(SECS/RPR) /GEARRATIO;
   vB = rpmB * RCONST * WRADIUS * SECS;
   
   PIDA.Compute();
