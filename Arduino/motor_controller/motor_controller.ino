@@ -88,6 +88,7 @@ void drive(double speed_req_A,double speed_req_B){
     digitalWrite(I1,LOW);
     digitalWrite(I2,LOW);  
     dirA =0;
+
   }
   if (speed_req_B < 0)
   {
@@ -108,6 +109,7 @@ void drive(double speed_req_A,double speed_req_B){
     digitalWrite(I3,LOW);
     digitalWrite(I4,LOW);
     dirB =0;    
+
   } 
 
 }
