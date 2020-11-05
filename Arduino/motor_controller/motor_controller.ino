@@ -30,14 +30,14 @@ int I3 = 6;
 int I4 =7;
 
 static uint32_t secsA = 0; //time between successive revolutions
-static uint32_t dirA = 0; 
+static int dirA = 0; 
 
 double rpmA;  //motor rpm
 double lrpmA = 0; //prevrpm
 double vA;  // in m/min
 
 static uint32_t secsB = 0; //time between successive revolutions
-static uint32_t dirB = 0; 
+static int dirB = 0; 
 
 
 double rpmB;  //motor rpm
