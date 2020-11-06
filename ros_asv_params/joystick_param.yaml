@@ -1,0 +1,41 @@
+# teleop:
+#   walk:
+#     type: topic
+#     message_type: geometry_msgs/Twist
+#     topic_name: /cmd_vel
+#     deadman_buttons: [4]
+#     axis_mappings:
+#       -
+#         axis: 0
+#         target: linear.x
+#         scale: 0.3
+#         offset: -0.03
+#       -
+#         axis: 1
+#         target: angular.z
+#         scale: 0.3
+#         offset: -0.03
+#       -
+#         axis: 2
+#         target: linear.y
+#         scale: 0.3
+
+#   hello:
+#     type: topic
+#     message_type: std_msgs/String
+#     topic_name: chatter
+#     deadman_buttons: [1]
+#     message_value:
+#       -
+#         target: data
+#         value: 'Hello'
+
+axis_linear: 1  # Left thumb stick vertical
+scale_linear: 0.3
+scale_linear_turbo: 0.5
+
+axis_angular: 0  # Left thumb stick horizontal
+scale_angular: 1
+
+enable_button: 0  # Left trigger button
+enable_turbo_button: 1  # Right trigger button

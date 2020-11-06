@@ -1,0 +1,1110 @@
+<?xml version="1.0" ?>
+<robot name="ros_asv" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find ros_asv_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find ros_asv_description)/urdf/ros_asv.trans" />
+<xacro:include filename="$(find ros_asv_description)/urdf/ros_asv.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-3.400087959250887e-18 3.552713678800501e-17 0.009999999999999981"/>
+    <mass value="0.16263116546540266"/>
+    <inertia ixx="0.001667" ixy="0.0" ixz="-0.0" iyy="1.4e-05" iyz="0.0" izz="0.001667"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Back_Right_Column_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="6.042068319515141e-18 -0.0038999999999995705 0.20500000000000057"/>
+    <mass value="0.19051079383090014"/>
+    <inertia ixx="0.002677" ixy="0.0" ixz="-0.0" iyy="0.002677" iyz="-0.0" izz="1.6e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0 0.1811 -0.0"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Back_Right_Column_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0 0.1811 -0.0"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Back_Right_Column_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Back_Left_Column_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="6.042068319515141e-18 0.0039000000000002366 0.20499999999999985"/>
+    <mass value="0.19051079383090014"/>
+    <inertia ixx="0.002677" ixy="0.0" ixz="-0.0" iyy="0.002677" iyz="-0.0" izz="1.6e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0 -0.1811 0.0"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Back_Left_Column_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0 -0.1811 0.0"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Back_Left_Column_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Ground_Right_Beam_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.15000000000000027 2.7755575615628914e-17 3.4867941867133823e-16"/>
+    <mass value="0.13939814182748805"/>
+    <inertia ixx="1.2e-05" ixy="0.0" ixz="0.0" iyy="0.001051" iyz="0.0" izz="0.001051"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.01 0.185 -0.01"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Ground_Right_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.01 0.185 -0.01"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Ground_Right_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Ground_Left_Beam_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.15000000000000027 -1.3877787807814457e-16 -3.8510861166685117e-16"/>
+    <mass value="0.13939814182748805"/>
+    <inertia ixx="1.2e-05" ixy="0.0" ixz="0.0" iyy="0.001051" iyz="0.0" izz="0.001051"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.01 -0.185 -0.01"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Ground_Left_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.01 -0.185 -0.01"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Ground_Left_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Front_Right_Column_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0039000000000004587 3.885780586188048e-16 0.20500000000000057"/>
+    <mass value="0.19051079383090014"/>
+    <inertia ixx="0.002677" ixy="0.0" ixz="-0.0" iyy="0.002677" iyz="-0.0" izz="1.6e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.3161 0.185 -0.0"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Front_Right_Column_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.3161 0.185 -0.0"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Front_Right_Column_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Front_Left_Column_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.003900000000000292 2.220446049250313e-16 0.20499999999999985"/>
+    <mass value="0.19051079383090014"/>
+    <inertia ixx="0.002677" ixy="-0.0" ixz="-0.0" iyy="0.002677" iyz="-0.0" izz="1.6e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.3161 -0.185 0.0"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Front_Left_Column_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.3161 -0.185 0.0"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Front_Left_Column_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- <link name="Ground_Front_Beam_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="4.440892098500626e-16 0.1750000000000003 8.673617379884035e-18"/>
+    <mass value="0.16263116546540266"/>
+    <inertia ixx="0.001667" ixy="0.0" ixz="0.0" iyy="1.4e-05" iyz="0.0" izz="0.001667"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.32 0.175 -0.01"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Ground_Front_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.32 0.175 -0.01"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Ground_Front_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link> -->
+
+<link name="Ground_Front_Beam_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="4.440892098500626e-16 -0.17499999999999968 8.673617379884035e-18"/>
+    <mass value="0.16263116546540266"/>
+    <inertia ixx="0.001667" ixy="0.0" ixz="0.0" iyy="1.4e-05" iyz="0.0" izz="0.001667"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.32 -0.175 -0.01"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Ground_Front_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.32 -0.175 -0.01"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Ground_Front_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- <link name="First_Back_Beam_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.1796419100005741e-18 0.1750000000000004 1.6653345369377348e-16"/>
+    <mass value="0.16263116546540266"/>
+    <inertia ixx="0.001667" ixy="0.0" ixz="-0.0" iyy="1.4e-05" iyz="0.0" izz="0.001667"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.0 0.175 -0.13"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/First_Back_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.0 0.175 -0.13"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/First_Back_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link> -->
+
+<link name="First_Back_Beam_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.1796419100005741e-18 -0.17499999999999957 1.6653345369377348e-16"/>
+    <mass value="0.16263116546540266"/>
+    <inertia ixx="0.001667" ixy="0.0" ixz="-0.0" iyy="1.4e-05" iyz="0.0" izz="0.001667"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0 -0.175 -0.13"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/First_Back_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0 -0.175 -0.13"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/First_Back_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- <link name="First_Right_Beam_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.15000000000000022 2.7755575615628914e-16 5.273559366969494e-16"/>
+    <mass value="0.13939814182748805"/>
+    <inertia ixx="1.2e-05" ixy="0.0" ixz="0.0" iyy="0.001051" iyz="0.0" izz="0.001051"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.01 0.185 -0.13"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/First_Right_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.01 0.185 -0.13"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/First_Right_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link> -->
+
+<link name="First_Right_Beam_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.14999999999999977 2.7755575615628914e-16 5.273559366969494e-16"/>
+    <mass value="0.13939814182748805"/>
+    <inertia ixx="1.2e-05" ixy="0.0" ixz="0.0" iyy="0.001051" iyz="0.0" izz="0.001051"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.31 0.185 -0.13"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/First_Right_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.31 0.185 -0.13"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/First_Right_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- <link name="First_Left_Beam_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.15000000000000052 1.1102230246251565e-16 -2.498001805406602e-16"/>
+    <mass value="0.13939814182748805"/>
+    <inertia ixx="1.2e-05" ixy="0.0" ixz="0.0" iyy="0.001051" iyz="0.0" izz="0.001051"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.01 -0.185 -0.13"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/First_Left_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.01 -0.185 -0.13"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/First_Left_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link> -->
+
+<link name="First_Left_Beam_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.14999999999999947 1.1102230246251565e-16 -2.498001805406602e-16"/>
+    <mass value="0.13939814182748805"/>
+    <inertia ixx="1.2e-05" ixy="0.0" ixz="0.0" iyy="0.001051" iyz="0.0" izz="0.001051"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.31 -0.185 -0.13"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/First_Left_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.31 -0.185 -0.13"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/First_Left_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- <link name="First_Forward_Beam_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="4.440892098500626e-16 0.17500000000000054 1.3877787807814457e-16"/>
+    <mass value="0.16263116546540266"/>
+    <inertia ixx="0.001667" ixy="0.0" ixz="0.0" iyy="1.4e-05" iyz="0.0" izz="0.001667"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.32 0.175 -0.13"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/First_Forward_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.32 0.175 -0.13"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/First_Forward_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link> -->
+
+<link name="First_Forward_Beam_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="4.440892098500626e-16 -0.17499999999999943 1.3877787807814457e-16"/>
+    <mass value="0.16263116546540266"/>
+    <inertia ixx="0.001667" ixy="0.0" ixz="0.0" iyy="1.4e-05" iyz="0.0" izz="0.001667"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.32 -0.175 -0.13"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/First_Forward_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.32 -0.175 -0.13"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/First_Forward_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- <link name="Second_Back_Beam_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.1796419100005741e-18 0.17500000000000085 5.551115123125783e-17"/>
+    <mass value="0.16263116546540266"/>
+    <inertia ixx="0.001667" ixy="0.0" ixz="-0.0" iyy="1.4e-05" iyz="0.0" izz="0.001667"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.0 0.175 -0.4"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Second_Back_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.0 0.175 -0.4"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Second_Back_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link> -->
+
+<link name="Second_Back_Beam_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.1796419100005741e-18 -0.17499999999999913 5.551115123125783e-17"/>
+    <mass value="0.16263116546540266"/>
+    <inertia ixx="0.001667" ixy="0.0" ixz="-0.0" iyy="1.4e-05" iyz="0.0" izz="0.001667"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0 -0.175 -0.4"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Second_Back_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0 -0.175 -0.4"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Second_Back_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- <link name="Second_Right_Beam_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.15000000000000052 7.771561172376096e-16 6.106226635438361e-16"/>
+    <mass value="0.13939814182748805"/>
+    <inertia ixx="1.2e-05" ixy="-0.0" ixz="-0.0" iyy="0.001051" iyz="0.0" izz="0.001051"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.01 0.185 -0.4"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Second_Right_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.01 0.185 -0.4"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Second_Right_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link> -->
+
+<link name="Second_Right_Beam_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.14999999999999947 7.771561172376096e-16 6.106226635438361e-16"/>
+    <mass value="0.13939814182748805"/>
+    <inertia ixx="1.2e-05" ixy="-0.0" ixz="-0.0" iyy="0.001051" iyz="0.0" izz="0.001051"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.31 0.185 -0.4"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Second_Right_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.31 0.185 -0.4"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Second_Right_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- <link name="Second_Left_Beam_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.15000000000000047 6.106226635438361e-16 -3.885780586188048e-16"/>
+    <mass value="0.13939814182748805"/>
+    <inertia ixx="1.2e-05" ixy="0.0" ixz="0.0" iyy="0.001051" iyz="0.0" izz="0.001051"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.01 -0.185 -0.4"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Second_Left_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.01 -0.185 -0.4"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Second_Left_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link> -->
+
+<link name="Second_Left_Beam_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.14999999999999952 6.106226635438361e-16 -3.885780586188048e-16"/>
+    <mass value="0.13939814182748805"/>
+    <inertia ixx="1.2e-05" ixy="0.0" ixz="0.0" iyy="0.001051" iyz="0.0" izz="0.001051"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.31 -0.185 -0.4"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Second_Left_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.31 -0.185 -0.4"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Second_Left_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- <link name="Second_Forward_Beam_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="4.440892098500626e-16 0.17500000000000088 1.1102230246251565e-16"/>
+    <mass value="0.16263116546540266"/>
+    <inertia ixx="0.001667" ixy="0.0" ixz="-0.0" iyy="1.4e-05" iyz="0.0" izz="0.001667"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.32 0.175 -0.4"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Second_Forward_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.32 0.175 -0.4"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Second_Forward_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link> -->
+
+<link name="Second_Forward_Beam_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="4.440892098500626e-16 -0.1749999999999991 1.1102230246251565e-16"/>
+    <mass value="0.16263116546540266"/>
+    <inertia ixx="0.001667" ixy="0.0" ixz="-0.0" iyy="1.4e-05" iyz="0.0" izz="0.001667"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.32 -0.175 -0.4"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Second_Forward_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.32 -0.175 -0.4"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Second_Forward_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Kinect_Right_Column_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="3.0531133177191805e-16 1.0547118733938987e-15 0.14500000000000074"/>
+    <mass value="0.1347515370999051"/>
+    <inertia ixx="0.00095" ixy="0.0" ixz="-0.0" iyy="0.00095" iyz="-0.0" izz="1.1e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.16 0.185 -0.41"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Kinect_Right_Column_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.16 0.185 -0.41"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Kinect_Right_Column_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Kinect_Left_Column_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="2.7755575615628914e-16 8.604228440844963e-16 0.14500000000000018"/>
+    <mass value="0.1347515370999051"/>
+    <inertia ixx="0.00095" ixy="0.0" ixz="0.0" iyy="0.00095" iyz="-0.0" izz="1.1e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.16 -0.185 -0.41"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Kinect_Left_Column_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.16 -0.185 -0.41"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Kinect_Left_Column_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- <link name="Kinect_Beam_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="3.0531133177191805e-16 0.17500000000000135 4.440892098500626e-16"/>
+    <mass value="0.16263116546540266"/>
+    <inertia ixx="0.001667" ixy="0.0" ixz="-0.0" iyy="1.4e-05" iyz="0.0" izz="0.001667"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.16 0.175 -0.69"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Kinect_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.16 0.175 -0.69"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Kinect_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link> -->
+
+<link name="Kinect_Beam_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="3.0531133177191805e-16 -0.17499999999999863 4.440892098500626e-16"/>
+    <mass value="0.16263116546540266"/>
+    <inertia ixx="0.001667" ixy="0.0" ixz="-0.0" iyy="1.4e-05" iyz="0.0" izz="0.001667"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.16 -0.175 -0.69"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Kinect_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.16 -0.175 -0.69"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Kinect_Beam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Left_Motor_Mount_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.014032658175056207 0.008729043605446019 5.821659598857776e-06"/>
+    <mass value="0.02648465354976086"/>
+    <inertia ixx="6e-06" ixy="2e-06" ixz="-0.0" iyy="1e-05" iyz="0.0" izz="9e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.01 -0.179 -0.02"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Left_Motor_Mount_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.01 -0.179 -0.02"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Left_Motor_Mount_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Right_Motor_Mount_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.014032658175056075 -0.008729043605446046 -5.821659598889001e-06"/>
+    <mass value="0.02648465354976086"/>
+    <inertia ixx="6e-06" ixy="-2e-06" ixz="0.0" iyy="1e-05" iyz="0.0" izz="9e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.01 0.179 -0.02"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Right_Motor_Mount_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.01 0.179 -0.02"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Right_Motor_Mount_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Left_Motor_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.00017904992231521782 -0.025568444538905805 -1.49002834376466e-10"/>
+    <mass value="0.13749894717958394"/>
+    <inertia ixx="5.8e-05" ixy="-1e-06" ixz="-0.0" iyy="1.8e-05" iyz="-0.0" izz="5.8e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.03 -0.19325 -0.02"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Left_Motor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.03 -0.19325 -0.02"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Left_Motor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Right_Motor_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0001790499223154017 0.02556844453890575 1.4900279968199648e-10"/>
+    <mass value="0.13749894717958394"/>
+    <inertia ixx="5.8e-05" ixy="1e-06" ixz="0.0" iyy="1.8e-05" iyz="-0.0" izz="5.8e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.03 0.19325 -0.02"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Right_Motor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.03 0.19325 -0.02"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Right_Motor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Left_Wheel_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="8.94899050696285e-11 -0.012500000000000122 -1.4901210473872162e-10"/>
+    <mass value="0.0942972596919878"/>
+    <inertia ixx="8.1e-05" ixy="0.0" ixz="-0.0" iyy="0.000154" iyz="-0.0" izz="8.1e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.024 -0.22955 -0.02"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Left_Wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.024 -0.22955 -0.02"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Left_Wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Right_Wheel_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="8.949012017533953e-11 0.012500000000000122 1.4901202494144172e-10"/>
+    <mass value="0.0942972596919878"/>
+    <inertia ixx="8.1e-05" ixy="0.0" ixz="-0.0" iyy="0.000154" iyz="-0.0" izz="8.1e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.024 0.22955 -0.02"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Right_Wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.024 0.22955 -0.02"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Right_Wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Right_Castor_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.007066450457602125 -3.875999797203766e-06 -0.01610861149067353"/>
+    <mass value="0.022774017737249585"/>
+    <inertia ixx="2e-06" ixy="0.0" ixz="1e-06" iyy="3e-06" iyz="-0.0" izz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.32 0.185 0.000375"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Right_Castor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.32 0.185 0.000375"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Right_Castor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Left_Castor_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.007066450457601681 -3.875999796704166e-06 -0.016108611490674277"/>
+    <mass value="0.022774017737249585"/>
+    <inertia ixx="2e-06" ixy="0.0" ixz="1e-06" iyy="3e-06" iyz="-0.0" izz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.32 -0.185 0.000375"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Left_Castor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.32 -0.185 0.000375"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Left_Castor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="RPi_Case_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.031000000000000916 0.014999999999998598 5.273559366969494e-16"/>
+    <mass value="0.18730200000000002"/>
+    <inertia ixx="0.000155" ixy="-0.0" ixz="0.0" iyy="0.000201" iyz="0.0" izz="7.4e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.31 0.175 -0.13"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/RPi_Case_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.31 0.175 -0.13"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/RPi_Case_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="PSU_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="2.3980817331903383e-15 6.67130239939695e-16 0.1150000000000001"/>
+    <mass value="3.5672999999999995"/>
+    <inertia ixx="0.030114" ixy="-0.0" ixz="-0.0" iyy="0.017398" iyz="-0.0" izz="0.01606"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.0 -0.0 -0.14"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/PSU_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.0 -0.0 -0.14"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/PSU_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Kinect_Base_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-4.4982423286210604e-07 -4.790169603699464e-08 0.009930080169777589"/>
+    <mass value="0.08687629147944863"/>
+    <inertia ixx="4.5e-05" ixy="0.0" ixz="0.0" iyy="3.2e-05" iyz="-0.0" izz="7.2e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.16 -0.0 -0.7"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Kinect_Base_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.16 -0.0 -0.7"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Kinect_Base_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Kinect_Sensor_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.0014152214951219932 0.0003335256404732938 0.0318110091899082"/>
+    <mass value="0.46962835372194695"/>
+    <inertia ixx="0.002402" ixy="-2e-06" ixz="0.0" iyy="0.000194" iyz="-0.0" izz="0.002479"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.16 -0.0 -0.7215"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Kinect_Sensor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.16 -0.0 -0.7215"/>
+    <geometry>
+      <mesh filename="package://ros_asv_description/meshes/Kinect_Sensor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rigid1" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 -0.1811 0.0"/>
+  <parent link="base_link"/>
+  <child link="Back_Right_Column_1"/>
+</joint>
+
+<joint name="Rigid2" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.1811 0.0"/>
+  <parent link="base_link"/>
+  <child link="Back_Left_Column_1"/>
+</joint>
+
+<joint name="Rigid3" type="fixed">
+  <origin rpy="0 0 0" xyz="0.01 -0.0039 0.01"/>
+  <parent link="Back_Right_Column_1"/>
+  <child link="Ground_Right_Beam_1"/>
+</joint>
+
+<joint name="Rigid4" type="fixed">
+  <origin rpy="0 0 0" xyz="0.01 0.0039 0.01"/>
+  <parent link="Back_Left_Column_1"/>
+  <child link="Ground_Left_Beam_1"/>
+</joint>
+
+<joint name="Rigid5" type="fixed">
+  <origin rpy="0 0 0" xyz="0.3061 0.0 -0.01"/>
+  <parent link="Ground_Right_Beam_1"/>
+  <child link="Front_Right_Column_1"/>
+</joint>
+
+<joint name="Rigid6" type="fixed">
+  <origin rpy="0 0 0" xyz="0.3061 0.0 -0.01"/>
+  <parent link="Ground_Left_Beam_1"/>
+  <child link="Front_Left_Column_1"/>
+</joint>
+
+<!-- <joint name="Rigid7" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0039 0.36 0.01"/>
+  <parent link="Front_Right_Column_1"/>
+  <child link="Ground_Front_Beam_1"/>
+</joint> -->
+
+<joint name="Rigid8" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0039 -0.01 0.01"/>
+  <parent link="Front_Left_Column_1"/>
+  <child link="Ground_Front_Beam_1"/>
+</joint>
+
+<!-- <joint name="Rigid9" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.3561 0.13"/>
+  <parent link="Back_Right_Column_1"/>
+  <child link="First_Back_Beam_1"/>
+</joint> -->
+
+<joint name="Rigid10" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 -0.0061 0.13"/>
+  <parent link="Back_Left_Column_1"/>
+  <child link="First_Back_Beam_1"/>
+</joint>
+
+<!-- <joint name="Rigid12" type="fixed">
+  <origin rpy="0 0 0" xyz="0.31 -0.0039 0.13"/>
+  <parent link="Back_Right_Column_1"/>
+  <child link="First_Right_Beam_1"/>
+</joint> -->
+
+<joint name="Rigid13" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.0061 0.0 0.13"/>
+  <parent link="Front_Right_Column_1"/>
+  <child link="First_Right_Beam_1"/>
+</joint>
+
+<!-- <joint name="Rigid14" type="fixed">
+  <origin rpy="0 0 0" xyz="0.31 0.0039 0.13"/>
+  <parent link="Back_Left_Column_1"/>
+  <child link="First_Left_Beam_1"/>
+</joint> -->
+
+<joint name="Rigid15" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.0061 0.0 0.13"/>
+  <parent link="Front_Left_Column_1"/>
+  <child link="First_Left_Beam_1"/>
+</joint>
+
+<!-- <joint name="Rigid16" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0039 0.36 0.13"/>
+  <parent link="Front_Right_Column_1"/>
+  <child link="First_Forward_Beam_1"/>
+</joint> -->
+
+<joint name="Rigid17" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0039 -0.01 0.13"/>
+  <parent link="Front_Left_Column_1"/>
+  <child link="First_Forward_Beam_1"/>
+</joint>
+
+<!-- <joint name="Rigid18" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.3561 0.4"/>
+  <parent link="Back_Right_Column_1"/>
+  <child link="Second_Back_Beam_1"/>
+</joint> -->
+
+<joint name="Rigid19" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 -0.0061 0.4"/>
+  <parent link="Back_Left_Column_1"/>
+  <child link="Second_Back_Beam_1"/>
+</joint>
+
+<!-- <joint name="Rigid20" type="fixed">
+  <origin rpy="0 0 0" xyz="0.31 -0.0039 0.4"/>
+  <parent link="Back_Right_Column_1"/>
+  <child link="Second_Right_Beam_1"/>
+</joint> -->
+
+<joint name="Rigid21" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.0061 0.0 0.4"/>
+  <parent link="Front_Right_Column_1"/>
+  <child link="Second_Right_Beam_1"/>
+</joint>
+
+<!-- <joint name="Rigid22" type="fixed">
+  <origin rpy="0 0 0" xyz="0.31 0.0039 0.4"/>
+  <parent link="Back_Left_Column_1"/>
+  <child link="Second_Left_Beam_1"/>
+</joint> -->
+
+<joint name="Rigid23" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.0061 0.0 0.4"/>
+  <parent link="Front_Left_Column_1"/>
+  <child link="Second_Left_Beam_1"/>
+</joint>
+
+<!-- <joint name="Rigid24" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0039 0.36 0.4"/>
+  <parent link="Front_Right_Column_1"/>
+  <child link="Second_Forward_Beam_1"/>
+</joint> -->
+
+<joint name="Rigid25" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0039 -0.01 0.4"/>
+  <parent link="Front_Left_Column_1"/>
+  <child link="Second_Forward_Beam_1"/>
+</joint>
+
+<joint name="Rigid26" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.15 0.0 0.01"/>
+  <parent link="Second_Right_Beam_1"/>
+  <child link="Kinect_Right_Column_1"/>
+</joint>
+
+<joint name="Rigid27" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.15 0.0 0.01"/>
+  <parent link="Second_Left_Beam_1"/>
+  <child link="Kinect_Left_Column_1"/>
+</joint>
+
+<!-- <joint name="Rigid28" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.36 0.28"/>
+  <parent link="Kinect_Right_Column_1"/>
+  <child link="Kinect_Beam_1"/>
+</joint> -->
+
+<joint name="Rigid30" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 -0.01 0.28"/>
+  <parent link="Kinect_Left_Column_1"/>
+  <child link="Kinect_Beam_1"/>
+</joint>
+
+<joint name="Rigid31" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.01 -0.0021 0.02"/>
+  <parent link="Back_Left_Column_1"/>
+  <child link="Left_Motor_Mount_1"/>
+</joint>
+
+<joint name="Rigid32" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.01 0.0021 0.02"/>
+  <parent link="Back_Right_Column_1"/>
+  <child link="Right_Motor_Mount_1"/>
+</joint>
+
+<joint name="Rigid33" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.02 0.01425 0.0"/>
+  <parent link="Left_Motor_Mount_1"/>
+  <child link="Left_Motor_1"/>
+</joint>
+
+<joint name="Rigid34" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.02 -0.01425 0.0"/>
+  <parent link="Right_Motor_Mount_1"/>
+  <child link="Right_Motor_1"/>
+</joint>
+
+<joint name="Left_Rev" type="continuous">
+  <origin rpy="0 0 0" xyz="0.006 0.0363 0.0"/>
+  <parent link="Left_Motor_1"/>
+  <child link="Left_Wheel_1"/>
+  <axis xyz="0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="Right_Rev" type="continuous">
+  <origin rpy="0 0 0" xyz="0.006 -0.0363 0.0"/>
+  <parent link="Right_Motor_1"/>
+  <child link="Right_Wheel_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="Rigid37" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0039 0.0 -0.000375"/>
+  <parent link="Front_Right_Column_1"/>
+  <child link="Right_Castor_1"/>
+</joint>
+
+<joint name="Rigid38" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0039 0.0 -0.000375"/>
+  <parent link="Front_Left_Column_1"/>
+  <child link="Left_Castor_1"/>
+</joint>
+
+<joint name="Rigid39" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.01 0.0"/>
+  <parent link="First_Right_Beam_1"/>
+  <child link="RPi_Case_1"/>
+</joint>
+
+<joint name="Rigid40" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.0 -0.175 0.01"/>
+  <parent link="First_Back_Beam_1"/>
+  <child link="PSU_1"/>
+</joint>
+
+<joint name="Rigid41" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 -0.175 0.01"/>
+  <parent link="Kinect_Beam_1"/>
+  <child link="Kinect_Base_1"/>
+</joint>
+
+<joint name="Rigid42" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.0 0.0215"/>
+  <parent link="Kinect_Base_1"/>
+  <child link="Kinect_Sensor_1"/>
+</joint>
+
+</robot>

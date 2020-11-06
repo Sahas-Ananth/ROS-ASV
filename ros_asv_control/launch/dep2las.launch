@@ -1,0 +1,9 @@
+<launch>
+    <node pkg="depthimage_to_laserscan" name="depthimage_to_laserscan" type="depthimage_to_laserscan">
+        <remap from="image" to="/camera/depth/image_raw"/>
+        <param name="output_frame_id" value="Kinect_Sensor_1"/>
+        <param name="range_min" value="0.15"/>
+        <param name="scan_height" value="3"/>
+    </node>
+    <!-- <node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="0 0 0 0 0 0 odom camera_link 0" /> -->
+</launch>
