@@ -13,6 +13,7 @@ WHEEL_BASE = 0.48
 
 class Odometry_Publisher():
     def __init__(self):
+        rospy.loginfo("Starting Odom Publisher")
         rospy.init_node("Odometry_Publisher")
         self.left_vel = 0
         self.right_vel = 0
@@ -29,7 +30,7 @@ class Odometry_Publisher():
         y = 0.0
         th = 0.0
 
-        rate = rospy.Rate(1)
+        rate = rospy.Rate(20)
         last_time = rospy.Time.now()
         while not rospy.is_shutdown():
             current_time = rospy.Time.now()
@@ -38,7 +39,7 @@ class Odometry_Publisher():
 
             vx = (self.left_vel + self.right_vel)/2
             vy = 0
-            vth = (self.left_vel - self.right_vel)/WHEEL_BASE
+            vth = (self.right_vel - self.left_vel)/WHEEL_BASE
 
             dx = (vx * cos(th))*dt
             dy = (vy * sin(th))*dt
@@ -54,6 +55,7 @@ class Odometry_Publisher():
             self.odom_broadcastor.sendTransform(
                 (x, y, 0.), odom_quat, current_time, "base_link", "odom")
 
+            rospy.loginfo("Publishing odom")
             odom = Odometry()
             odom.header.stamp = current_time
             odom.header.frame_id = "odom"
@@ -64,7 +66,7 @@ class Odometry_Publisher():
             odom.twist.twist = Twist(Vector3(vx, vy, 0), Vector3(0, 0, vth))
 
             self.odom_pub.publish(odom)
-
+            rospy.loginfo("Publishing Pose")
             last_time = current_time
             rate.sleep()
 
