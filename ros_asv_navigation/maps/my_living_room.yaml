@@ -1,4 +1,4 @@
-image: cgbot_ws/src/ros_asv_control/maps/my_living_room.pgm
+image: /home/sahas/cgbot_ws/src/ros_asv_navigation/maps/my_living_room.pgm
 resolution: 0.010000
 origin: [-20.000000, -20.000000, 0.000000]
 negate: 0

@@ -594,7 +594,7 @@
 
 <link name="Kinect_Beam_1">
   <inertial>
-    <origin rpy="0 0 0" xyz="3.0531133177191805e-16 -0.17499999999999863 4.440892098500626e-16"/>
+    <origin rpy="0 0 0" xyz="0.3200000000000003 2.664535259100376e-16 0.5000000000000003"/>
     <mass value="0.16263116546540266"/>
     <inertia ixx="0.001667" ixy="0.0" ixz="-0.0" iyy="1.4e-05" iyz="0.0" izz="0.001667"/>
   </inertial>
@@ -1028,8 +1028,8 @@
 </joint> -->
 
 <joint name="Rigid30" type="fixed">
-  <origin rpy="0 0 0" xyz="0.0 -0.01 0.28"/>
-  <parent link="Kinect_Left_Column_1"/>
+  <origin rpy="0 0 0" xyz="0.0039 -0.01 0.25"/>
+  <parent link="Front_Left_Column_1"/>
   <child link="Kinect_Beam_1"/>
 </joint>
 

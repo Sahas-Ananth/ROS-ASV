@@ -1,4 +1,4 @@
-image: /home/sahas/cgbot_ws/src/ros_asv_control/maps/hall.pgm
+image: /home/sahas/cgbot_ws/src/ros_asv_navigation/maps/hall.pgm
 resolution: 0.010000
 origin: [-20.000000, -20.000000, 0.000000]
 negate: 0
