@@ -3,6 +3,7 @@
 #include <PID_v1.h>
 #include <ros.h>
 #include <std_msgs/String.h>
+#include <std_msgs/Bool.h>
 #include <geometry_msgs/Vector3Stamped.h>
 #include <geometry_msgs/Twist.h>
 #include <ros/time.h>
@@ -60,14 +61,18 @@ PID PIDA(&vA, &pwmA, &speed_req_A, KpA, KiA, KdA, DIRECT);
 PID PIDB(&vB, &pwmB, &speed_req_B, KpB, KiB, KdB, DIRECT);
 
 void handle_cmd (const geometry_msgs::Twist& cmd_vel);
+void handle_uv (const std_msgs::Bool& cmd_uv);
 void drive(int speedA,int speedB);
 
 ros::NodeHandle nh;
 geometry_msgs::Vector3Stamped speed_msg; 
+std_msgs::Bool uv_status;
 
-ros::Subscriber<geometry_msgs::Twist> cmd_vel("cmd_vel", handle_cmd);                                
+ros::Subscriber<geometry_msgs::Twist> cmd_vel("cmd_vel", handle_cmd);   
+ros::Subscriber<std_msgs::Bool> cmd_uv("cmd_uv", handle_uv);   
+
 ros::Publisher speed_pub("speed", &speed_msg); 
-
+ros::Publisher uv_pub("uv", &uv_status); 
 void drive(double speed_req_A,double speed_req_B){
   if (speed_req_A < 0)
   {
@@ -114,6 +119,9 @@ void drive(double speed_req_A,double speed_req_B){
 
 }
 
+void handle_uv (const std_msgs::Bool& cmd_uv){
+  digitalWrite(A0,cmd_uv)
+}
 void handle_cmd (const geometry_msgs::Twist& cmd_vel) {
   deadloops = 0; 
                                                    
@@ -135,9 +143,15 @@ void publishSpeed(int looptime) {
   speed_msg.vector.z = looptime; 
   speed_pub.publish(&speed_msg);
   nh.spinOnce();
+  publishUV();
   nh.loginfo("Publishing odometry\n");
 }
 
+void publishUV() {
+   
+  uv_pub.publish(digitalRead(A0));
+  nh.spinOnce();
+}
 void updateEncoderA(){
 static uint32_t tempA;
   secsA = micros() - tempA;
@@ -173,13 +187,15 @@ void setup()
   pinMode(E2, OUTPUT);
   pinMode(I3, OUTPUT); 
   pinMode(I4, OUTPUT);  
-
+  pinMode(A0, OUTPUT);
+  
   digitalWrite(E1,LOW);
   digitalWrite(E2,LOW);
   digitalWrite(I1,LOW);
   digitalWrite(I2,LOW);
   digitalWrite(I3,LOW);
-  digitalWrite(I4,LOW);  
+  digitalWrite(I4,LOW);
+  digitalWrite(A0,LOW);
   
   attachInterrupt(0, updateEncoderA, RISING);
   attachInterrupt(1, updateEncoderB, RISING); 
