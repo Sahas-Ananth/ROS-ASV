@@ -120,7 +120,7 @@ void drive(double speed_req_A,double speed_req_B){
 }
 
 void handle_uv (const std_msgs::Bool& cmd_uv){
-  digitalWrite(A0,cmd_uv)
+  digitalWrite(A0,cmd_uv.data);
 }
 void handle_cmd (const geometry_msgs::Twist& cmd_vel) {
   deadloops = 0; 
@@ -148,8 +148,8 @@ void publishSpeed(int looptime) {
 }
 
 void publishUV() {
-   
-  uv_pub.publish(digitalRead(A0));
+  uv_status.data = digitalRead(A0);
+  uv_pub.publish(&uv_status);
   nh.spinOnce();
 }
 void updateEncoderA(){
